@@ -23,7 +23,6 @@ function App() {
     });
 
     setInvestmentResults(results);
-    console.log(results);
   }
 
   return (

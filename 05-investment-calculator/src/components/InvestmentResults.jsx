@@ -19,12 +19,17 @@ export default function InvestmentResults({
 
         <tbody>
           {investmentResults.map((row, index) => {
+            const totalInterest =
+              row.valueEndOfYear -
+              row.annualInvestment * row.year -
+              initialInvestment;
+
             return (
               <tr key={index}>
                 <td>{row.year}</td>
                 <td>{formatter.format(row.valueEndOfYear)}</td>
                 <td>{formatter.format(row.interest)}</td>
-                <td>{formatter.format(row.annualInvestment)}</td>
+                <td>{formatter.format(totalInterest)}</td>
                 <td>{formatter.format(initialInvestment)}</td>
               </tr>
             );

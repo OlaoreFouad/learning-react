@@ -8,32 +8,13 @@ export default function InvestmentForm({ onInvestmentFormUpdated }) {
     duration: 0,
   });
 
-  function handleInitialInvestmentChange(event) {
-    setInvestmentDetails((prevInvesmentDetails) => ({
-      ...prevInvesmentDetails,
-      initialInvestment: +event.target.value,
-    }));
-  }
-
-  function handleAnnualInvestmentChange(event) {
-    setInvestmentDetails((prevInvesmentDetails) => ({
-      ...prevInvesmentDetails,
-      annualInvestment: +event.target.value,
-    }));
-  }
-
-  function handleExpectedReturnChange(event) {
-    setInvestmentDetails((prevInvesmentDetails) => ({
-      ...prevInvesmentDetails,
-      expectedReturn: +event.target.value,
-    }));
-  }
-
-  function handleDurationChange(event) {
-    setInvestmentDetails((prevInvesmentDetails) => ({
-      ...prevInvesmentDetails,
-      duration: +event.target.value,
-    }));
+  function handleChange(inputIdentifier, newValue) {
+    setInvestmentDetails((prevInvesmentDetails) => {
+      return {
+        ...prevInvesmentDetails,
+        [inputIdentifier]: newValue,
+      };
+    });
   }
 
   useEffect(() => {
@@ -46,24 +27,44 @@ export default function InvestmentForm({ onInvestmentFormUpdated }) {
         <div className="input-group">
           <div>
             <label>Initial Investment</label>
-            <input type="number" onChange={handleInitialInvestmentChange} />
+            <input
+              type="number"
+              onChange={(event) =>
+                handleChange("initialInvestment", +event.target.value)
+              }
+            />
           </div>
 
           <div>
             <label>Annual Investment</label>
-            <input type="number" onChange={handleAnnualInvestmentChange} />
+            <input
+              type="number"
+              onChange={(event) =>
+                handleChange("annualInvestment", +event.target.value)
+              }
+            />
           </div>
         </div>
 
         <div className="input-group">
           <div>
             <label>Expected Return</label>
-            <input type="number" onChange={handleExpectedReturnChange} />
+            <input
+              type="number"
+              onChange={(event) =>
+                handleChange("expectedReturn", +event.target.value)
+              }
+            />
           </div>
 
           <div>
             <label>Duration</label>
-            <input type="number" onChange={handleDurationChange} />
+            <input
+              type="number"
+              onChange={(event) =>
+                handleChange("duration", +event.target.value)
+              }
+            />
           </div>
         </div>
       </div>
